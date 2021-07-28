@@ -209,8 +209,6 @@
         updated: function () {
             var originaltop = 0;
             var originalleft = 0;
-            var quando = "do";
-            var quanden = "den";
             $(".chessnode").draggable({
                 start: function (event, ui) {
                     originaltop = ui.position.top;
@@ -297,6 +295,22 @@
                             if (((app.indexStartI > app.indexStopI && Math.abs(app.indexStopJ - app.indexStartJ) == 0)) &&
                                 app.hasChessNode(app.chessMatrix[app.indexStopI][app.indexStopJ].left, app.chessMatrix[app.indexStopI][app.indexStopJ].top, app.chessMatrix[app.indexStopI][app.indexStopJ].id) != 1) {
                                 
+                                var node = $("#" + this.id);
+                                node.css({ 'top': app.chessMatrix[app.indexStopI][app.indexStopJ].top + 'px' });
+                                node.css({ 'left': app.chessMatrix[app.indexStopI][app.indexStopJ].left + 'px' });
+                                app.$set(app.chessMatrix[app.indexStartI][app.indexStartJ], "id", "");
+                                flag = true;
+                            }
+                        }
+                        if (this.id.indexOf("totden2") >= 0) {
+
+                            //console.log(app.indexStartI);
+                            //console.log(app.indexStopI);
+                            //console.log(app.indexStopI - app.indexStartI);
+                            //console.log(app.indexStartI - app.indexStopI);
+                            if (((app.indexStartI > app.indexStopI && Math.abs(app.indexStopJ - app.indexStartJ) == 0)) &&
+                                app.hasChessNode(app.chessMatrix[app.indexStopI][app.indexStopJ].left, app.chessMatrix[app.indexStopI][app.indexStopJ].top, app.chessMatrix[app.indexStopI][app.indexStopJ].id) != 1) {
+
                                 var node = $("#" + this.id);
                                 node.css({ 'top': app.chessMatrix[app.indexStopI][app.indexStopJ].top + 'px' });
                                 node.css({ 'left': app.chessMatrix[app.indexStopI][app.indexStopJ].left + 'px' });
@@ -395,7 +409,7 @@
                                     node.css({ 'top': app.chessMatrix[app.indexStopI][app.indexStopJ].top + 'px' });
                                     node.css({ 'left': app.chessMatrix[app.indexStopI][app.indexStopJ].left + 'px' });
                                     app.$set(app.chessMatrix[app.indexStartI][app.indexStartJ], "id", "");
-                                    app.chessMatrix[app.indexStopI][app.indexStopJ].id.visible(false);
+                                    
                                     flag = true;
                                 }
                             }
